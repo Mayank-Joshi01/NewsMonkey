@@ -35,6 +35,8 @@ const News = (props)=> {
 
 useEffect(() => {
   FetchingData();
+  // eslint-disable-next-line
+  document.title = `NewsMonkey - ${capitalizeTheFirstLetter(category)}`
 },[])
 
 
@@ -50,7 +52,7 @@ useEffect(() => {
     return (
 
       <div className="container my-3">
-        <h2 className='text-center'>NewsMonkey - Top{capitalizeTheFirstLetter(props.category) === "General" ? "" : ` ${capitalizeTheFirstLetter(props.category)} `}Headlines</h2>
+        <h2 className='text-center' style={{marginTop:"90px"}}>NewsMonkey - Top{capitalizeTheFirstLetter(props.category) === "General" ? "" : ` ${capitalizeTheFirstLetter(props.category)} `}Headlines</h2>
 
         <InfiniteScroll
         
