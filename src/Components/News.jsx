@@ -34,8 +34,8 @@ const News = (props)=> {
 
 
 useEffect(() => {
+// eslint-disable-next-line
   FetchingData();
-  // eslint-disable-next-line
   document.title = `NewsMonkey - ${capitalizeTheFirstLetter(category)}`
 },[])
 
