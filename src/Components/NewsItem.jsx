@@ -4,7 +4,7 @@ const NewsItem = (props) => {
 
   const [imageLoadError, SetimageLoadError] = useState(true)
 
-  let { title, description, img_url, news_url, date, author, source } = props
+  let { title, description, img_url, news_url,author, source } = props
 
   return (
     < div className="my-3">
@@ -29,7 +29,6 @@ const NewsItem = (props) => {
           <p className="card-text">{description}</p>
           <a href={news_url} target='blank' className="btn btn-sm btn-primary">Read More</a>
           <p className="card-text m-0"><small className="text-muted">Author : {author}</small></p>
-          <p className="card-text"><small className="text-muted">Pusblished At : {new Date(date).toGMTString()}</small></p>
         </div>
       </div>
     </div>

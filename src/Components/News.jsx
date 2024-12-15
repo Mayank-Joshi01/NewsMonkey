@@ -11,23 +11,23 @@ const News = (props)=> {
   }
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState('')
   const [totalResults, setTotalResults] = useState(0)
 
   const country = props.country
   const category = props.category
   const Api_Key = props.Api_Key
-  const pageSize = props.pageSize
   const SetProgress = props.SetProgress
 
 
   const FetchingData = async ()=> {
     SetProgress(10)
-    const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${Api_Key}&pageSize=${pageSize}&page=${page}`;
+    const url = ` https://newsdata.io/api/1/latest?country=${country}&category=${category}&apiKey=${Api_Key}`;
     let data = await fetch(url);
     let parseData = await data.json();
-    setArticles(parseData.articles);
+    setArticles(parseData.results);
     setTotalResults(parseData.totalResults)
+    setPage(parseData.nextPage)
     setLoading(false)
     SetProgress(100)
   }
@@ -41,19 +41,18 @@ useEffect(() => {
 
 
   const fetchMoreData = async () => {
-    setPage(page+1)
-    const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${Api_Key}&pageSize=${pageSize}&page=${page+1}`;
+    const url = `https://newsdata.io/api/1/latest?country=${country}&category=${category}&apiKey=${Api_Key}&page=${page}`;
     let data = await fetch(url);
     let parseData = await data.json()
-    setArticles(articles.concat(parseData.articles));
+    setArticles(articles.concat(parseData.results));
+    setPage(parseData.nextPage)
   };
-
 
     return (
 
       <div className="container my-3">
         <h2 className='text-center' style={{marginTop:"90px"}}>NewsMonkey - Top{capitalizeTheFirstLetter(props.category) === "General" ? "" : ` ${capitalizeTheFirstLetter(props.category)} `}Headlines</h2>
-
+{loading && <Spinner/>} 
         <InfiniteScroll
         
           dataLength={articles.length}
@@ -63,9 +62,9 @@ useEffect(() => {
           loader={<Spinner/>}
         >
           <div className="row">
-            {!loading && articles.map((element) => {
-              return element.title !== "[Removed]" && <div className="col-md-4" key={element.url}>
-                <NewsItem title={(element.title) ? element.title.slice(0, 45) + "..." : ""} description={element.description ? element.description.slice(0, 88) + "..." : ""} img_url={element.urlToImage} news_url={element.url} date={element.publishedAt.slice(0, 10)} author={element.author ? element.author : "Unknown"} source={element.source.name} />
+            {articles.map((element) => {
+              return element.title !== "[Removed]" && <div className="col-md-4" key={element.link}>
+                <NewsItem title={(element.title) ? element.title.slice(0, 45) + "..." : ""} description={element.description ? element.description.slice(0, 88) + "..." : ""} img_url={element.image_url} news_url={element.link} author={element.author ? element.creator : "Unknown"} source={element.source_id} />
               </div>
             })}
           </div>

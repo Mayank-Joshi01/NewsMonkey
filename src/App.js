@@ -8,7 +8,8 @@ import LoadingBar from 'react-top-loading-bar'
 const App = ()=> {
 
  const api_key = process.env.REACT_APP_API_KEY
-  const [progress,setprogress] = useState(0)
+ console.log(api_key)
+ const [progress,setprogress] = useState(0)
 
  const setProgress = (num)=>{
      setprogress({progress : num})
@@ -22,13 +23,13 @@ const App = ()=> {
         progress={progress}
       />
         <Routes>
-        <Route path="/" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="general" category="general"/> } />
-        <Route path="/business" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="business" category="business"/> } />
-        <Route path="/entertainment" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="entertainment" category="entertainment"/> } />
-        <Route path="/science" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="science" category="science"/> } />
-        <Route path="/health" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="health" category="health"/> } />
-        <Route path="/sports" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="sports" category="sports"/> } />
-        <Route path="/technology" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="technology" category="technology"/> } />
+        <Route exct path="/NewsMonkey" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="top" category="top"/> } />
+        <Route exct path="/NewsMonkey/business" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="business" category="business"/> } />
+        <Route exct path="/NewsMonkey/entertainment" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="entertainment" category="entertainment"/> } />
+        <Route exct path="/NewsMonkey/science" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="science" category="science"/> } />
+        <Route exct path="/NewsMonkey/health" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="health" category="health"/> } />
+        <Route exct path="/NewsMonkey/sports" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="sports" category="sports"/> } />
+        <Route exct path="/NewsMonkey/technology" element={ <News Api_Key={api_key} country="us" pageSize={6} SetProgress={setProgress} key="technology" category="technology"/> } />
         
       </Routes>
         
