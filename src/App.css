@@ -7,6 +7,13 @@
   pointer-events: none;
 }
 
+.country{
+  list-style: none;
+  position: absolute;
+  top:16px;
+  right:315px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -34,5 +41,87 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.s-p{
+  position: fixed;
+  top:5px;
+  right:10px;
+  height: auto;
+}
+
+.scrollable-nav{
+  width: 450px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+}
+.heading{
+  margin-top: 90px;
+}
+.dropdown-menu li {
+  display: flex;
+}
+.dropdown-menu{
+  width: 150px !important;
+}
+.dropdown-menu li img {
+  height:25px;
+}
+.dropdown-menu li a{
+  padding: 5px;
+}
+.dropdown-menu{
+  height: 126px;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+}
+.card{
+  margin: auto;
+}
+@media (max-width:990px) {
+  .s-p{
+    position: relative;  
+    height: 100%;
+  }
+  .container-fluid{
+    display:block !important;
+  }
+  .p-f{
+    position: relative;
+  }
+  .nav-2{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  .country{
+    position: static;
+    display: flex;
+    align-items: center;
+  }
+  .navbar-brand{
+    display: inline-block;
+    width:100vw;
+    text-align: center;
+  }
+  .heading{
+    margin-top: 100px;
+  }
+  .scrollable-nav{
+    width: 100%;
+    height: 200px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  
+  }
+  .scrollable-nav li a{
+    text-align: center;
+  }
+  .dropdown-menu{
+    position: absolute;
+    z-index: 90px;
   }
 }

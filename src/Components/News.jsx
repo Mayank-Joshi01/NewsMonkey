@@ -18,11 +18,12 @@ const News = (props)=> {
   const category = props.category
   const Api_Key = props.Api_Key
   const SetProgress = props.SetProgress
+  const q = props.q
 
 
   const FetchingData = async ()=> {
     SetProgress(10)
-    const url = ` https://newsdata.io/api/1/latest?country=${country}&category=${category}&apiKey=${Api_Key}`;
+    const url = ` https://newsdata.io/api/1/latest?country=${country}&category=${category}&apiKey=${Api_Key}${q?"&q="+q:""}`;
     let data = await fetch(url);
     let parseData = await data.json();
     setArticles(parseData.results);
@@ -41,7 +42,7 @@ useEffect(() => {
 
 
   const fetchMoreData = async () => {
-    const url = `https://newsdata.io/api/1/latest?country=${country}&category=${category}&apiKey=${Api_Key}&page=${page}`;
+    const url = `https://newsdata.io/api/1/latest?country=${country}&category=${category}&apiKey=${Api_Key}&page=${page}${q?"&q="+q:""}`;
     let data = await fetch(url);
     let parseData = await data.json()
     setArticles(articles.concat(parseData.results));
@@ -51,7 +52,7 @@ useEffect(() => {
     return (
 
       <div className="container my-3">
-        <h2 className='text-center' style={{marginTop:"90px"}}>NewsMonkey - Top{capitalizeTheFirstLetter(props.category) === "General" ? "" : ` ${capitalizeTheFirstLetter(props.category)} `}Headlines</h2>
+        <h2 className='text-center heading'>NewsMonkey -{capitalizeTheFirstLetter(props.category) === "General" ? "" : ` ${capitalizeTheFirstLetter(props.category)} `}Headlines</h2>
 {loading && <Spinner/>} 
         <InfiniteScroll
         
@@ -62,7 +63,9 @@ useEffect(() => {
           loader={<Spinner/>}
         >
           <div className="row">
-            {articles.map((element) => {
+            {(articles.filter((item, index, self) => {
+  return self.findIndex(i => i.title === item.title) === index;
+})).map((element) => {
               return element.title !== "[Removed]" && <div className="col-md-4" key={element.link}>
                 <NewsItem title={(element.title) ? element.title.slice(0, 45) + "..." : ""} description={element.description ? element.description.slice(0, 88) + "..." : ""} img_url={element.image_url} news_url={element.link} author={element.author ? element.creator : "Unknown"} source={element.source_id} />
               </div>
