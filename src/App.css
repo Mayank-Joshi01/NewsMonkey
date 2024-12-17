@@ -121,7 +121,7 @@
     text-align: center;
   }
   .dropdown-menu{
-    position: absolute;
+    position: fixed;
     z-index: 90px;
   }
 }

@@ -18,7 +18,7 @@ export default function Navbar(props) {
               <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Country
               </a>
-              <ul className="dropdown-menu"style={{top:"90%"}}>
+              <ul className="dropdown-menu"style={{top:"100px"}}>
                 <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=63725&format=png&color=000000" alt="" />wordwide</a></li>
                 <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=esGVrxg9VCJ1&format=png&color=000000" alt=""/>India</a></li>
                 <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=aRiu1GGi6Aoe&format=png&color=000000" alt="" />USA</a></li>
