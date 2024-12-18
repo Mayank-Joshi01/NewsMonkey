@@ -26,16 +26,16 @@ const App = ()=> {
       />
         <Routes>
         <Route exct path="/NewsMonkey" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="top" category="world"/> } />
-        <Route exct path="/NewsMonkey/Business" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="business" category="business"/> } />
-        <Route exct path="/NewsMonkey/Entertainment" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="entertainment" category="entertainment"/> } />
-        <Route exct path="/NewsMonkey/Science" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="science" category="science"/> } />
-        <Route exct path="/NewsMonkey/Health" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="health" category="health"/> } />
-        <Route exct path="/NewsMonkey/Food" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="food" category="food"/> } />
-        <Route exct path="/NewsMonkey/Crime" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="crime" category="crime"/> } />
-        <Route exct path="/NewsMonkey/Education" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="education" category="education"/> } />
-        <Route exct path="/NewsMonkey/Politics" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="politics" category="politics"/> } />
-        <Route exct path="/NewsMonkey/Sports" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="sports" category="sports"/> } />
-        <Route exct path="/NewsMonkey/Technology" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key="technology" category="technology"/> } />
+        <Route exct path="/NewsMonkey/Business" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`business/${country}`} category="business"/> } />
+        <Route exct path="/NewsMonkey/Entertainment" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`entertainment/${country}`} category="entertainment"/> } />
+        <Route exct path="/NewsMonkey/Science" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`science/${country}`} category="science"/> } />
+        <Route exct path="/NewsMonkey/Health" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`health/${country}`} category="health"/> } />
+        <Route exct path="/NewsMonkey/Food" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`food/${country}`} category="food"/> } />
+        <Route exct path="/NewsMonkey/Crime" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`crime/${country}`} category="crime"/> } />
+        <Route exct path="/NewsMonkey/Education" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`education/${country}`} category="education"/> } />
+        <Route exct path="/NewsMonkey/Politics" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`politics/${country}`} category="politics"/> } />
+        <Route exct path="/NewsMonkey/Sports" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`sports/${country}`} category="sports"/> } />
+        <Route exct path="/NewsMonkey/Technology" element={ <News Api_Key={api_key} country={country}  SetProgress={setProgress} key={`technology/${country}`} category="technology"/> } />
         <Route path="/NewsMonkey/Topic/*" element={ <News Api_Key={api_key} q={Search} topic={Key} SetProgress={setProgress} key={Key} /> } />
       </Routes>
         

@@ -13,14 +13,14 @@ const News = (props)=> {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState('')
   const [totalResults, setTotalResults] = useState(0)
-  
+
   const topic = props.topic
   const country = props.country
   const category = props.category
   const Api_Key = props.Api_Key
   const SetProgress = props.SetProgress
   const q = props.q
-
+console.log(country)
 
 
   const FetchingData = async ()=> {
@@ -40,7 +40,7 @@ useEffect(() => {
 // eslint-disable-next-line
   FetchingData();
   document.title = `NewsMonkey - ${capitalizeTheFirstLetter(category?category:q)}`
-  },[])
+  },[country])
 
   const fetchMoreData = async () => {
     const url = `https://newsdata.io/api/1/latest?apiKey=${Api_Key}${country?"&country="+country:""}${category?"&category="+category:""}&page=${page}${q?"&q="+q:""}`;
