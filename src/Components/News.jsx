@@ -20,7 +20,6 @@ const News = (props)=> {
   const Api_Key = props.Api_Key
   const SetProgress = props.SetProgress
   const q = props.q
-console.log(country)
 
 
   const FetchingData = async ()=> {
@@ -54,7 +53,7 @@ useEffect(() => {
     return (
 
       <div className="container my-3">
-        <h2 className='text-center heading'>NewsMonkey -{capitalizeTheFirstLetter(category?category:topic)} Headlines</h2>
+        <h2 className='text-center heading'>NewsMonkey -{capitalizeTheFirstLetter(category?category:topic)} Headlines {category==="world"?"":(props.countryname?props.countryname:"")}</h2>
 {loading && <Spinner/>} 
         <InfiniteScroll
         
