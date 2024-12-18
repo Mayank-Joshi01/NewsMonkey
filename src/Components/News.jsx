@@ -13,7 +13,8 @@ const News = (props)=> {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState('')
   const [totalResults, setTotalResults] = useState(0)
-
+  
+  const topic = props.topic
   const country = props.country
   const category = props.category
   const Api_Key = props.Api_Key
@@ -21,9 +22,10 @@ const News = (props)=> {
   const q = props.q
 
 
+
   const FetchingData = async ()=> {
     SetProgress(10)
-    const url = ` https://newsdata.io/api/1/latest?country=${country}&category=${category}&apiKey=${Api_Key}${q?"&q="+q:""}`;
+    const url = ` https://newsdata.io/api/1/latest?apiKey=${Api_Key}${country?"&country="+country:""}${category?"&category="+category:""}${q?"&q="+q:""}`;
     let data = await fetch(url);
     let parseData = await data.json();
     setArticles(parseData.results);
@@ -37,22 +39,22 @@ const News = (props)=> {
 useEffect(() => {
 // eslint-disable-next-line
   FetchingData();
-  document.title = `NewsMonkey - ${capitalizeTheFirstLetter(category)}`
-},[])
-
+  document.title = `NewsMonkey - ${capitalizeTheFirstLetter(category?category:q)}`
+  },[])
 
   const fetchMoreData = async () => {
-    const url = `https://newsdata.io/api/1/latest?country=${country}&category=${category}&apiKey=${Api_Key}&page=${page}${q?"&q="+q:""}`;
+    const url = `https://newsdata.io/api/1/latest?apiKey=${Api_Key}${country?"&country="+country:""}${category?"&category="+category:""}&page=${page}${q?"&q="+q:""}`;
     let data = await fetch(url);
     let parseData = await data.json()
     setArticles(articles.concat(parseData.results));
     setPage(parseData.nextPage)
   };
 
+
     return (
 
       <div className="container my-3">
-        <h2 className='text-center heading'>NewsMonkey -{capitalizeTheFirstLetter(props.category) === "General" ? "" : ` ${capitalizeTheFirstLetter(props.category)} `}Headlines</h2>
+        <h2 className='text-center heading'>NewsMonkey -{capitalizeTheFirstLetter(category?category:topic)} Headlines</h2>
 {loading && <Spinner/>} 
         <InfiniteScroll
         

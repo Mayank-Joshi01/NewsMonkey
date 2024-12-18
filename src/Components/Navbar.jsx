@@ -15,22 +15,22 @@ export default function Navbar(props) {
           <div className="nav-2">
 
             <li className="nav-item dropdown country">
-              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Country
               </a>
               <ul className="dropdown-menu"style={{top:"100px"}}>
-                <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=63725&format=png&color=000000" alt="" />wordwide</a></li>
-                <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=esGVrxg9VCJ1&format=png&color=000000" alt=""/>India</a></li>
-                <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=aRiu1GGi6Aoe&format=png&color=000000" alt="" />USA</a></li>
-                <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=3muzEmi4dpD5&format=png&color=000000" alt="" />France</a></li>
-                <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=ly7tzANRt33n&format=png&color=000000" alt="" />Spain</a></li>
-                <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=cYRU7TBWwNVs&format=png&color=000000" alt="" />Canada</a></li>
-                <li><a className="dropdown-item" href="#"><img src="https://img.icons8.com/?size=100&id=Ej50Oe3crXwF&format=png&color=000000" alt="" />China</a></li>
+                <li><a className="dropdown-item" onClick={props.setCountry("")} ><img src="https://img.icons8.com/?size=100&id=63725&format=png&color=000000" alt="" />wordwide</a></li>
+                <li><a className="dropdown-item" onClick={props.setCountry("in")}><img src="https://img.icons8.com/?size=100&id=esGVrxg9VCJ1&format=png&color=000000" alt=""/>India</a></li>
+                <li><a className="dropdown-item" onClick={props.setCountry("us")}><img src="https://img.icons8.com/?size=100&id=aRiu1GGi6Aoe&format=png&color=000000" alt="" />USA</a></li>
+                <li><a className="dropdown-item" onClick={props.setCountry("fr")}><img src="https://img.icons8.com/?size=100&id=3muzEmi4dpD5&format=png&color=000000" alt="" />France</a></li>
+                <li><a className="dropdown-item" onClick={props.setCountry("es")}><img src="https://img.icons8.com/?size=100&id=ly7tzANRt33n&format=png&color=000000" alt="" />Spain</a></li>
+                <li><a className="dropdown-item" onClick={props.setCountry("ca")}><img src="https://img.icons8.com/?size=100&id=cYRU7TBWwNVs&format=png&color=000000" alt="" />Canada</a></li>
+                <li><a className="dropdown-item" onClick={props.setCountry("cn")}><img src="https://img.icons8.com/?size=100&id=Ej50Oe3crXwF&format=png&color=000000" alt="" />China</a></li>
               </ul>
             </li>
             <form className="d-flex s-p" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" onChange={handelSearch} value={props.Search} aria-label="Search" />
-              <Link className="btn btn-outline-success" type="submit" to={`/NewsMonkey/topic/${props.Search} `} onClick={() => { props.setKey(props.Search) }}>Search</Link>
+              <Link className="btn btn-outline-success" type="submit" to={`/NewsMonkey/topic/${props.Search} `} onClick={() => { props.setKey(props.Search)}}>Search</Link>
             </form>
             <button className="navbar-toggler p-f" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
