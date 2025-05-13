@@ -26,6 +26,7 @@ NewsMonkey is a web application that aggregates and displays news articles from 
    cd newsmonkey
 
 2. Install dependencies:
+    ```bash
     npm install
 
 3. Create a .env file in the root directory and add your NewsAPI key:
